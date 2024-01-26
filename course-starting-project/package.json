@@ -1,5 +1,5 @@
 {
-  "name": "understanding-ts",
+  "name": "course-starting-project",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "lite-server"
   },
-  "author": "Maximilian Schwarzmüller",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lite-server": "^2.5.4"
+    "lite-server": "^2.6.1"
   }
 }
