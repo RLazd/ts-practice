@@ -1,50 +1,43 @@
-// TYPESCRIPT COMPILER
 /*
-// before  used: tsc app.ts
-Compiling  1 project:
-    tsc app.ts -w = watchmode on the file -> automatically recompiles
+const,let - global, function and BLOCK scope (if, forelopp, curly braces).
+var - only global and function scope (if its in an if statement => you can access it globally)
 
-Entire project (all files): 
-    tsc --init
-        creates tsconfig.json
-        =>now you can run just
-    tsc -w
-        will run all tsc files in watchmode
+Arrow funcions
 
-In tsconfig.json       
-    "include": [""]
-        Includes files, everything not included will be excluded!
-    "files": [""]
-        Includes
-    "exclude":["filename.ts"]
-        Excludes files, node_modules are excluded by default
-    
-    Compilation target:
-    "compilerOptions":
-        "target": "es5"
-            choose js version  
-        "lib":[]
-            default (commented) - depends on js target es6 (eg has Map()) + assumes that all DOM APIs are available
-        "lib": ["dom", "es6", "dom.iterable",  "scripthost"]
-            -if uncommented -> should include everything yourself!:
-        "allowJs": true
-        "checkJs": true
++Default params in func should come last!!!
 
-        "sourceMap":
-            generates map files emitted JS files (connects js files to input files); good for debugging (you can debug in ts files in browser)
-        
-        "outDir": "./dist"
-            dist output (js files)
+Spread operator
 
-        "rootDir": "./src"
-            src dir (ts files)
-        
-        "noEmitOnError" - dont make js if ts does not compile
+Rest Params - use with tuples
 
-        "strict":true 
-            all options true - default
-            strictNullCheks-
-            strictFunctionTypes-
-            strictBindCallApply-
-            
+Destructurins
+
+
 */
+const addArrowF = (a: number, b: number = 1) => a + b;
+
+const printArrowWithFuncDef: (a: number | string) => void = (output) =>
+  console.log(output);
+
+const hobbies = ["Sport", "Cookies", "otherHobby"];
+const activeHobbies = ["Hiking"];
+activeHobbies.push(...hobbies);
+
+//Rest Param with a tuple - could use just number[]
+const addNumbersRetsParams = (...numbers: [number, number, number]) => {
+  return numbers.reduce((acc, currVal) => {
+    return acc + currVal;
+  }, 0);
+};
+const addNumbers = addNumbersRetsParams(5, 10, 2);
+
+// Destructuring (without colon!) - new array --> otherHobbies
+const [hobby1, hobby2, ...otherHobbies] = hobbies;
+console.log(otherHobbies);
+
+const personObj = {
+  firstName: "Max",
+  age: 30,
+};
+const { firstName: username, age } = personObj; // elements are not pulled out n order! (but by key-names)
+console.log(username, age);
