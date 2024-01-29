@@ -1,43 +1,34 @@
-/*
-const,let - global, function and BLOCK scope (if, forelopp, curly braces).
-var - only global and function scope (if its in an if statement => you can access it globally)
+// CLASS
+class Department {
+  // private readonly id: string; // no need to double initialize !
+  // public name: string = "DEFAULT"; //field of a class
+  private employees: string[] = [];
+  constructor(private readonly id: string, public name: string) {
+    //this.name = n; no need to double initialize !
+  }
 
-Arrow funcions
+  describe(this: Department) {
+    console.log(`Department: ${this.name}, ${this.id}`);
+  }
 
-+Default params in func should come last!!!
+  addEmployee(employee: string) {
+    this.employees.push(employee);
+  }
+  printEmployInfo() {
+    console.log(this.employees.length);
+    console.log(this.employees);
+  }
+}
+// OBJECT
+const accounting = new Department("d1", "Accounting");
 
-Spread operator
+// THIS
+accounting.describe(); //Department: Accounting
+const accountingCopy = { name: "s", describe: accounting.describe }; // Object literal, this = the thing which is responsible for calling method
+//accountingCopy.describe(); // if without this (name property) => Department: undefined
 
-Rest Params - use with tuples
+// PUBLIC, PRIVATE = modifiers
+accounting.addEmployee("Max");
+accounting.printEmployInfo();
 
-Destructurins
-
-
-*/
-const addArrowF = (a: number, b: number = 1) => a + b;
-
-const printArrowWithFuncDef: (a: number | string) => void = (output) =>
-  console.log(output);
-
-const hobbies = ["Sport", "Cookies", "otherHobby"];
-const activeHobbies = ["Hiking"];
-activeHobbies.push(...hobbies);
-
-//Rest Param with a tuple - could use just number[]
-const addNumbersRetsParams = (...numbers: [number, number, number]) => {
-  return numbers.reduce((acc, currVal) => {
-    return acc + currVal;
-  }, 0);
-};
-const addNumbers = addNumbersRetsParams(5, 10, 2);
-
-// Destructuring (without colon!) - new array --> otherHobbies
-const [hobby1, hobby2, ...otherHobbies] = hobbies;
-console.log(otherHobbies);
-
-const personObj = {
-  firstName: "Max",
-  age: 30,
-};
-const { firstName: username, age } = personObj; // elements are not pulled out n order! (but by key-names)
-console.log(username, age);
+// READONLY - cant assign to this property, used just once when initialized !
