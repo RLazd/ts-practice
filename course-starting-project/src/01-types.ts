@@ -2,7 +2,7 @@
 
 //
 //CORE TYPES
-function add(n1: number, n2: number, showResult: boolean) {
+function addAndShow(n1: number, n2: number, showResult: boolean) {
   console.log(typeof n1);
   return `${n1 + n2}, ${showResult}`;
 }
@@ -13,7 +13,7 @@ const number1 = 5; //all numbers all floats 5 === 5.0
 const number2 = 7;
 let number3: number; //if not initialized you need a type
 let printResult = true;
-const result = add(number1, number2, printResult);
+const result = addAndShow(number1, number2, printResult);
 
 //
 // OBJECT TYPES
